@@ -15,10 +15,8 @@ struct SpotifyHomeView: View {
     @State private var selectedCategory : Category? = nil
     @State private var products : [Product] = []
     @State private var productRows : [ProductRow] = []
-    
-    
-    
-//    @Environment(\.dismiss) var dismiss
+
+    // @Environment(\.dismiss) var dismiss
     @Environment(\.router) var router
     
     
@@ -86,7 +84,6 @@ struct SpotifyHomeView: View {
                             //使用 router 的方法
                             router.dismissScreen()
                         }
-                        
                 }
             }
             .frame(width: 40,height: 40)
@@ -159,7 +156,6 @@ struct SpotifyHomeView: View {
                     Text(row.title)
                         .font(.title2.weight(.bold))
                         .lineLimit(1)
-//                                    .background(.spotifyGreen)
                         .padding(.horizontal)
                     ScrollView(.horizontal){
                         HStack(spacing:16){
@@ -173,15 +169,11 @@ struct SpotifyHomeView: View {
                                     goToPlayListView(product: product)
                                 }
                             }
-                                
                         }
                         .padding(.horizontal)
-                        
                     }
                     .scrollIndicators(.hidden)
-//                                .padding(.horizontal)
                 }
-
             }
         }
     }

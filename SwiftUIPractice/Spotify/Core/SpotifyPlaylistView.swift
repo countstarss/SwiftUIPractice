@@ -33,11 +33,10 @@ struct SpotifyPlaylistView: View {
                         imageName: product.thumbnail
                     )
                     .readingFrame { frame in
-
                         showHeader = frame.minY < -160 ? true : false
                     }
                     
-                    // 换用SwiftfulUI
+                    // 换用以上 SwiftfulUI方法
 //                    .overlay(
 //                        GeometryReader(content: { geometry in
 //                            Text("")
@@ -109,9 +108,7 @@ struct SpotifyPlaylistView: View {
     private func getData() async {
         do{
             products = try await DatabaseHelper().getProducts()
-
         }catch{
-            
         }
     }
     private var navigator :some View {
@@ -148,31 +145,6 @@ struct SpotifyPlaylistView: View {
         
         router.showScreen(.push) {_ in
             SpotifyPlaylistView(product: product, user: user, viewState: .zero)
-        }
-    }
-    
-    
-    var drag :some Gesture {
-        DragGesture(minimumDistance: 30, coordinateSpace: .local).onChanged{ value in
-            //添加守卫 滑动值必须为正,也就是右滑,否则不做反应
-            guard value.translation.width > 0 else { return }
-            
-            if value.startLocation.x < 100{
-                withAnimation {
-                    viewState = value.translation
-                }
-            }
-            
-            if viewState.width > 120 {
-            }
-        }
-        .onEnded{value in
-            if viewState.width > 80 {
-                
-            }else{
-                    viewState = .zero
-            }
-            
         }
     }
 }

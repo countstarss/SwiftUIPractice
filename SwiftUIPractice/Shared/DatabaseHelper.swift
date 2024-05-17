@@ -15,6 +15,7 @@ struct DatabaseHelper {
         
         let (data, _) = try await URLSession.shared.data(from: url)
         let products = try JSONDecoder().decode(ProductArray.self, from: data)
+        // 第一个是指fetch到的全部数据
         return products.products
     }
     
