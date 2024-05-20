@@ -21,20 +21,17 @@ struct BumbleFilterView: View {
                         .frame(maxWidth:.infinity)
                         .font(.headline)
                         .fontWeight(.bold)
-                    
-                    // opacity
-//                    RoundedRectangle(cornerRadius: 2)
-//                        .frame(height: 1.5)
-//                        .opacity(selection == option ? 1 : 0)
-                    
-                    // display
+
                     if selection == option {
                         RoundedRectangle(cornerRadius: 2)
                             .frame(height: 1.5)
                             .matchedGeometryEffect(id: "ID", in: namespace)
                     }
+                    if selection == "Everyone" {
+                        
+                    }
                 }
-                .foregroundStyle(selection == option ? .bumbleBlack : .bumbleGray)
+//                .foregroundStyle(selection == option ? .bumbleBlack : .bumbleGray)
                 .onTapGesture {
                     withAnimation(.smooth(duration: 0.3)) {
                         selection = option
